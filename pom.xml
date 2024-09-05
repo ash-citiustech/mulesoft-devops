@@ -6,7 +6,7 @@
 
 	<groupId>9e92d154-1e60-4472-a384-4c9ed987b1ae</groupId>
 	<artifactId>mulesoft-devops</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<packaging>mule-application</packaging>
 
 	<name>mulesoft-devops</name>
@@ -39,18 +39,15 @@
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.7.0</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>${project.artifactId}-v1-${mule.env}
-						</applicationName>
+						<applicationName>${project.artifactId}-v1-${mule.env}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<businessGroupId>${project.groupId}</businessGroupId>
 						<skipDeploymentVerification>true</skipDeploymentVerification>
 						<properties>
 							<mule.env>${mule.env}</mule.env>
-							<anypoint.platform.config.analytics.agent.enabled>true
-							</anypoint.platform.config.analytics.agent.enabled>
-							<anypoint.platform.visualizer.layer>Experience
-							</anypoint.platform.visualizer.layer>
+							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+							<anypoint.platform.visualizer.layer>Experience</anypoint.platform.visualizer.layer>
 						</properties>
 						<secureProperties>
 							<mule.key>${env.ENCRYPTION_KEY}</mule.key>
