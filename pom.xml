@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>9e92d154-1e60-4472-a384-4c9ed987b1ae</groupId>
-	<artifactId>hello-world</artifactId>
-	<version>1.0.4</version>
+	<artifactId>mulesoft-devops</artifactId>
+	<version>1.0.7</version>
 	<packaging>mule-application</packaging>
 
-	<name>hello-world</name>
+	<name>mulesoft-devops</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -49,19 +49,21 @@
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 							<anypoint.platform.visualizer.layer>Experience</anypoint.platform.visualizer.layer>
 						</properties>
-						<!-- <secureProperties>
-							<mule.key>${env.ENCRYPTIO_KEY}</mule.key>
-							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}
-							</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}
-							</anypoint.platform.client_secret>
-						</secureProperties> -->
+						<secureProperties>
+							<mule.key>${env.ENCRYPTION_KEY}</mule.key>
+							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}</anypoint.platform.client_secret>
+						</secureProperties>
 						<deploymentSettings>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 							<updateStrategy>recreate</updateStrategy>
-							<!-- <http> <inbound> <publicUrl>${publicURL}/${app.name}</publicUrl> 
-								<forwardSslSession>false</forwardSslSession> <lastMileSecurity>false</lastMileSecurity> 
-								</inbound> </http> -->
+							<!--<http>
+								<inbound>
+									<publicUrl>${publicURL}/${app.name}</publicUrl>
+									<forwardSslSession>false</forwardSslSession>
+									<lastMileSecurity>false</lastMileSecurity>
+								</inbound>
+							</http>  -->
 						</deploymentSettings>
 					</cloudhub2Deployment>
 				</configuration>
