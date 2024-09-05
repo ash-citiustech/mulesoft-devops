@@ -5,8 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>9e92d154-1e60-4472-a384-4c9ed987b1ae</groupId>
-	<artifactId>mulesoft-devops</artifactId>
-	<version>1.0.3</version>
+
+	<artifactId>hello-world</artifactId>
+	<version>1.0.4</version>
 	<packaging>mule-application</packaging>
 
 	<name>mulesoft-devops</name>
