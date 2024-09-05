@@ -6,7 +6,7 @@
 
 	<groupId>9e92d154-1e60-4472-a384-4c9ed987b1ae</groupId>
 	<artifactId>hello-world</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
 	<name>hello-world</name>
@@ -37,10 +37,9 @@
 						<provider>MC</provider>
 						<environment>Dev</environment>
 						<target>Cloudhub-US-East-2</target>
-						<muleVersion>4.7</muleVersion>
+						<muleVersion>4.7.0</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>${project.artifactId}-v1-dev
-						</applicationName>
+						<applicationName>${project.artifactId}-v1-dev</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<businessGroupId>${project.groupId}</businessGroupId>
