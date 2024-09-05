@@ -39,29 +39,34 @@
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.7.0</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>${project.artifactId}-v1-${mule.env}</applicationName>
+						<applicationName>${project.artifactId}-v1-${mule.env}
+						</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<businessGroupId>${project.groupId}</businessGroupId>
 						<skipDeploymentVerification>true</skipDeploymentVerification>
 						<properties>
 							<mule.env>${mule.env}</mule.env>
-							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
-							<anypoint.platform.visualizer.layer>Experience</anypoint.platform.visualizer.layer>
+							<anypoint.platform.config.analytics.agent.enabled>true
+							</anypoint.platform.config.analytics.agent.enabled>
+							<anypoint.platform.visualizer.layer>Experience
+							</anypoint.platform.visualizer.layer>
 						</properties>
-						<!-- <secureProperties>
-							<mule.key>${env.ENCRYPTIO_KEY}</mule.key>
-							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}
-							</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}
-							</anypoint.platform.client_secret>
-						</secureProperties> -->
+						<secureProperties>
+							<mule.key>${env.ENCRYPTION_KEY}</mule.key>
+							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}</anypoint.platform.client_secret>
+						</secureProperties>
 						<deploymentSettings>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 							<updateStrategy>recreate</updateStrategy>
-							<!-- <http> <inbound> <publicUrl>${publicURL}/${app.name}</publicUrl> 
-								<forwardSslSession>false</forwardSslSession> <lastMileSecurity>false</lastMileSecurity> 
-								</inbound> </http> -->
+							<!--<http>
+								<inbound>
+									<publicUrl>${publicURL}/${app.name}</publicUrl>
+									<forwardSslSession>false</forwardSslSession>
+									<lastMileSecurity>false</lastMileSecurity>
+								</inbound>
+							</http>  -->
 						</deploymentSettings>
 					</cloudhub2Deployment>
 				</configuration>
