@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c593dc53-6842-42d2-925d-14cec983ec12" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="f934ce25-e6bc-4836-95c0-a24fb5c28486" >
+		<http:request-connection protocol="HTTPS">
+			<tls:context >
+				<tls:trust-store insecure="true" />
+			</tls:context>
+		</http:request-connection>
+	</http:request-config>
+	<flow name="hello-worldFlow" doc:id="39376249-adb6-4df2-b658-57b13de9cd92" >
+		<http:listener doc:name="Listener" doc:id="95fffad7-a02a-41df-81e7-bd379578e1ed" config-ref="HTTP_Listener_config" path="/getUser"/>
+		<http:request method="GET" doc:name="Request" doc:id="69dbe59b-4283-46fd-b6ac-39a128b9489f" url="https://reqres.in/api/users/2" config-ref="HTTP_Request_configuration"/>
+	</flow>
+</mule>
