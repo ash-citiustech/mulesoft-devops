@@ -35,23 +35,21 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>Dev</environment>
+						<environment>${mule.env}</environment>
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>4.7.0</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>${project.artifactId}-v1-dev</applicationName>
+						<applicationName>${project.artifactId}-v1-${mule.env}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<businessGroupId>${project.groupId}</businessGroupId>
 						<skipDeploymentVerification>true</skipDeploymentVerification>
-						<!-- <properties>
-							<mule.env>${env.MULE_ENV}</mule.env>
-							<anypoint.platform.config.analytics.agent.enabled>true
-							</anypoint.platform.config.analytics.agent.enabled>
-							<anypoint.platform.visualizer.layer>System
-							</anypoint.platform.visualizer.layer>
+						<properties>
+							<mule.env>${mule.env}</mule.env>
+							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+							<anypoint.platform.visualizer.layer>Experience</anypoint.platform.visualizer.layer>
 						</properties>
-						<secureProperties>
+						<!-- <secureProperties>
 							<mule.key>${env.ENCRYPTIO_KEY}</mule.key>
 							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}
 							</anypoint.platform.client_id>
