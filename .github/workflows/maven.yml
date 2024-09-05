@@ -7,7 +7,8 @@ on:
     branches: [ "main", "dev", "test" ]
 
 jobs:
-  build:
+  deployToDev:
+    if: ${{ github.ref == 'refs/heads/dev' }} 
     runs-on: ubuntu-latest
     env:
       CONNECTEDAPP_CLIENT_ID: ${{ secrets.CONNECTEDAPP_CLIENT_ID }}
@@ -22,8 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Updating POM Version
-      if: ${{ github.ref == 'refs/heads/dev' }}    
+    - name: Updating POM Version   
       run: |
         git config user.email "satishdindayalp@wilcosource.com"
         git config user.name "ash-citiustech"
@@ -34,19 +34,50 @@ jobs:
         git commit -m "[skip ci] version updated."
         git push origin dev  
         
-    - name: Publish to Exchange
-      if: ${{ github.ref == 'refs/heads/dev' }}     
+    - name: Publish to Exchange    
       run: mvn deploy --file pom.xml -s settings.xml  
       
-    - name: Deploy to CH2 dev
-      if: ${{ github.ref == 'refs/heads/dev' }}     
+    - name: Deploy to CH2 dev    
       run: mvn deploy -DmuleDeploy -Dmule.env=dev --file pom.xml -s settings.xml   
       
-    - name: Deploy to CH2 test
-      if: ${{ github.ref == 'refs/heads/test' }}     
-      run: mvn deploy -DmuleDeploy -Dmule.env=test --file pom.xml -s settings.xml 
+
+  deployToTest:
+    if: ${{ github.ref == 'refs/heads/test' }}
+    runs-on: ubuntu-latest
+    env:
+      CONNECTEDAPP_CLIENT_ID: ${{ secrets.CONNECTEDAPP_CLIENT_ID }}
+      CONNECTEDAPP_CLIENT_SECRET: ${{ secrets.CONNECTEDAPP_CLIENT_SECRET }}    
       
-    - name: Deploy to CH2 prod
-      if: ${{ github.ref == 'refs/heads/main' }}     
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven        
+   
+    - name: Deploy to CH2 test  
+      run: mvn deploy -DmuleDeploy -Dmule.env=test --file pom.xml -s settings.xml 
+
+
+  deployToProd:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    env:
+      CONNECTEDAPP_CLIENT_ID: ${{ secrets.CONNECTEDAPP_CLIENT_ID }}
+      CONNECTEDAPP_CLIENT_SECRET: ${{ secrets.CONNECTEDAPP_CLIENT_SECRET }}    
+      
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven        
+      
+    - name: Deploy to CH2 prod     
       run: mvn deploy -DmuleDeploy -Dmule.env=prod --file pom.xml -s settings.xml 
+
 
