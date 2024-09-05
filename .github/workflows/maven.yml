@@ -23,7 +23,7 @@ jobs:
         cache: maven
         
     - name: Updating POM Version
-      if: ${{ github.ref == 'refs/heads/dev }}    
+      if: ${{ github.ref == 'refs/heads/dev' }}    
       run: |
         git config user.email "satishdindayalp@wilcosource.com"
         git config user.name "ash-citiustech"
@@ -35,18 +35,18 @@ jobs:
         git push origin dev  
         
     - name: Publish to Exchange
-      if: ${{ github.ref == 'refs/heads/dev }}     
+      if: ${{ github.ref == 'refs/heads/dev' }}     
       run: mvn deploy --file pom.xml -s settings.xml  
       
     - name: Deploy to CH2 dev
-      if: ${{ github.ref == 'refs/heads/dev }}     
+      if: ${{ github.ref == 'refs/heads/dev' }}     
       run: mvn deploy -DmuleDeploy -Dmule.env=dev --file pom.xml -s settings.xml   
       
     - name: Deploy to CH2 test
-      if: ${{ github.ref == 'refs/heads/test }}     
+      if: ${{ github.ref == 'refs/heads/test' }}     
       run: mvn deploy -DmuleDeploy -Dmule.env=test --file pom.xml -s settings.xml 
       
     - name: Deploy to CH2 prod
-      if: ${{ github.ref == 'refs/heads/main }}     
+      if: ${{ github.ref == 'refs/heads/main' }}     
       run: mvn deploy -DmuleDeploy -Dmule.env=prod --file pom.xml -s settings.xml 
 
