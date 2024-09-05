@@ -49,19 +49,21 @@
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 							<anypoint.platform.visualizer.layer>Experience</anypoint.platform.visualizer.layer>
 						</properties>
-						<!-- <secureProperties>
-							<mule.key>${env.ENCRYPTIO_KEY}</mule.key>
-							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}
-							</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}
-							</anypoint.platform.client_secret>
-						</secureProperties> -->
+						<secureProperties>
+							<mule.key>${env.ENCRYPTION_KEY}</mule.key>
+							<anypoint.platform.client_id>${env.ENV_CLIENT_ID}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${env.ENV_CLIENT_SECRET}</anypoint.platform.client_secret>
+						</secureProperties>
 						<deploymentSettings>
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 							<updateStrategy>recreate</updateStrategy>
-							<!-- <http> <inbound> <publicUrl>${publicURL}/${app.name}</publicUrl> 
-								<forwardSslSession>false</forwardSslSession> <lastMileSecurity>false</lastMileSecurity> 
-								</inbound> </http> -->
+							<!--<http>
+								<inbound>
+									<publicUrl>${publicURL}/${app.name}</publicUrl>
+									<forwardSslSession>false</forwardSslSession>
+									<lastMileSecurity>false</lastMileSecurity>
+								</inbound>
+							</http>  -->
 						</deploymentSettings>
 					</cloudhub2Deployment>
 				</configuration>
