@@ -24,7 +24,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<ee:set-payload ><![CDATA[%dw 2.0
 output json
 ---
-payload.data]]></ee:set-payload>
+{
+	UserDetails: payload.data	
+}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
